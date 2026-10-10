@@ -24,7 +24,7 @@ class Phone(Field):
                     "Phone number must be 10 digits long and contain only numbers."
                 )
             value = phone_number
-        elif len(clean_phone) == 10:
+        elif len(phone_number) == 10:
             value = phone_number
 
         else:
