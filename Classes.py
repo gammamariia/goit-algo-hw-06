@@ -17,21 +17,12 @@ class Name(Field):
 
 class Phone(Field):
     def __init__(self, phone_number):
-        phone_number = phone_number.strip()
-        if phone_number.startswith("380"):
-            if len(phone_number) != 10 and not (phone_number.isdigit()):
-                raise ValueError(
-                    "Phone number must be 10 digits long and contain only numbers."
-                )
-            value = phone_number
-        elif len(phone_number) == 10:
-            value = phone_number
-
-        else:
+        phone_number = str(phone_number).strip()
+        if not phone_number.isdigit() or len(phone_number) != 10:
             raise ValueError(
                 "Phone number must be 10 digits long and contain only numbers."
             )
-        super().__init__(value)
+        super().__init__(phone_number)
 
 class Record:
     def __init__(self, name):
